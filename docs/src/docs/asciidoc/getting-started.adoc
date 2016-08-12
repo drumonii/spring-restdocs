@@ -284,7 +284,7 @@ Gradle (`build.gradle`) it will typically be `build/generated-snippets`:
 ----
 @Rule
 public JUnitRestDocumentation restDocumentation =
-		new JUnitRestDocumentation("target/generated-snippets");
+		new JUnitRestDocumentation(BuildTool.MAVEN);
 ----
 
 [source,java,indent=0,role="secondary"]
@@ -292,7 +292,7 @@ public JUnitRestDocumentation restDocumentation =
 ----
 @Rule
 public JUnitRestDocumentation restDocumentation =
-		new JUnitRestDocumentation("build/generated-snippets");
+		new JUnitRestDocumentation(BuildTool.GRADLE);
 ----
 
 Next, provide an `@Before` method to configure MockMvc or REST Assured:
@@ -335,14 +335,14 @@ The first difference is that `ManualRestDocumentation` should be used in place o
 .Maven
 ----
 private ManualRestDocumentation restDocumentation =
-		new ManualRestDocumentation("target/generated-snippets");
+		new ManualRestDocumentation(BuildTool.MAVEN);
 ----
 
 [source,java,indent=0,role="secondary"]
 .Gradle
 ----
 private ManualRestDocumentation restDocumentation =
-		new ManualRestDocumentation("build/generated-snippets");
+		new ManualRestDocumentation(BuildTool.GRADLE);
 ----
 
 Secondly, `ManualRestDocumentation.beforeTest(Class, String)`

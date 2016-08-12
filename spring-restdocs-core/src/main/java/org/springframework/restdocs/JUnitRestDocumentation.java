@@ -19,6 +19,7 @@ package org.springframework.restdocs;
 import org.junit.rules.TestRule;
 import org.junit.runner.Description;
 import org.junit.runners.model.Statement;
+import org.springframework.restdocs.config.BuildTool;
 
 /**
  * A JUnit {@link TestRule} used to automatically manage the
@@ -40,6 +41,16 @@ public class JUnitRestDocumentation
 	 */
 	public JUnitRestDocumentation(String outputDirectory) {
 		this.delegate = new ManualRestDocumentation(outputDirectory);
+	}
+
+	/**
+	 * Creates a new {@code JUnitRestDocumentation} instance that will generate snippets
+	 * based on the given {@link BuildTool}'s default build {@code outputDirectory}.
+	 *
+	 * @param buildTool the {@link BuildTool}
+	 */
+	public JUnitRestDocumentation(BuildTool buildTool) {
+		this(buildTool.getOutputDirectory());
 	}
 
 	@Override

@@ -16,6 +16,8 @@
 
 package org.springframework.restdocs;
 
+import org.springframework.restdocs.config.BuildTool;
+
 import java.io.File;
 
 /**
@@ -43,6 +45,16 @@ public final class ManualRestDocumentation implements RestDocumentationContextPr
 	 */
 	public ManualRestDocumentation(String outputDirectory) {
 		this.outputDirectory = new File(outputDirectory);
+	}
+
+	/**
+	 * Creates a new {@code ManualRestDocumentation} instance that will generate snippets
+	 * based on the given {@link BuildTool}'s default build {@code outputDirectory}.
+	 *
+	 * @param buildTool the {@link BuildTool}
+	 */
+	public ManualRestDocumentation(BuildTool buildTool) {
+		this(buildTool.getOutputDirectory());
 	}
 
 	/**
